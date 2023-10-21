@@ -1,0 +1,26 @@
+/*!*****************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
+  \*****************************************************************/
+#welcome, #play, #finale {
+    display: none;
+}
+#welcome.display {
+    display: block;
+}
+/*  */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+.attack {
+    background-color: red;
+}
+.missed {
+    background-color: blue;
+}
+/*  */
+.ship {
+    z-index: 1;
+}
+
