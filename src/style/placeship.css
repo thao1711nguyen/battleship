@@ -1,0 +1,29 @@
+#place-ship.display {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 12fr 1fr;
+    justify-items: center;
+    align-items: center;
+}
+#place-ship > h3 {
+    grid-area: 1/1/2/-1;
+}
+#place-ship > .player-board {
+    grid-area: 2/1/-1/2;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+#place-ship > .player-board > div {
+    border: 1px solid black;
+}
+#ships {
+    justify-self: start;
+    grid-area: 2/2/3/-1;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10%;
+}
+#finish {
+    grid-area: 3/2/-1/-1;
+}

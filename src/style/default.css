@@ -1,0 +1,19 @@
+#welcome, #play, #place-ship, #finale {
+    display: none;
+}
+/*  */
+#welcome.display {
+    display: block;
+}
+/*  */
+
+
+
+/*  */
+
+   
+
+/*  */
+.ship {
+    z-index: 1;
+}
