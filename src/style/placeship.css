@@ -1,9 +1,16 @@
 #place-ship.display {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 12fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr;
     justify-items: center;
-    align-items: center;
+    align-items: start;
+    gap: 10px;
+}
+#place-ship .instruct {
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 #place-ship > h3 {
     grid-area: 1/1/2/-1;
@@ -25,5 +32,6 @@
     gap: 10%;
 }
 #finish {
-    grid-area: 3/2/-1/-1;
+    grid-area: 1/2/2/-1;
+    justify-self: start;
 }

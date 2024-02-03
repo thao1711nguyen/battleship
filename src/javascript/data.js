@@ -26,7 +26,6 @@ export const gameboard = () => {
         })
     }
     function receiveAttack(position) {
-        let result = false
         for(let i=0; i<this.ships.length; i++) {
             let numberOfHitsBefore = this.ships[i].numberOfHits
             this.ships[i].hit(position)
@@ -35,7 +34,7 @@ export const gameboard = () => {
             } 
         }
         this.missedAttack.push(position)
-        return result 
+        return false
         
     }
     function isAllSunk() {

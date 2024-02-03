@@ -1,18 +1,15 @@
-#welcome, #play, #place-ship, #finale {
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#welcome, #play, #place-ship {
     display: none;
 }
 /*  */
 #welcome.display {
     display: block;
 }
-/*  */
-
-
-
-/*  */
-
-   
-
 /*  */
 .ship {
     z-index: 1;

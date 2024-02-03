@@ -133,7 +133,8 @@ export const dom = (() => {
         board.addEventListener('drop', (e) => {
             // cuz we add eventlistener to document
             e.stopPropagation()
-
+            
+            const boardAlign = board.getBoundingClientRect()
             const shipId = e.dataTransfer.getData('text/plain')
             const ship = getShip(shipId)
             const unit = ship.offsetWidth/shipLength
@@ -156,11 +157,13 @@ export const dom = (() => {
                     e.preventDefault()
                     let top, left
                     const originCellDiv = board.querySelector(`[data-id="${originCell}"]`)
-                    originCellDiv.appendChild(ship)
-                    originCellDiv.style.position = 'relative'
+                    const originCellDivAlign = originCellDiv.getBoundingClientRect()
+
+                    board.appendChild(ship)
+                    board.style.position = 'relative'
                     ship.style.position = 'absolute'
                     if(angle == 0) {
-                        top = 0
+                        top = 0 
                         left = -Math.floor(origin)*unit
                     } else {
                         if(shipLength % 2 == 0) {
@@ -171,6 +174,8 @@ export const dom = (() => {
                             left = -Math.floor(origin)*unit
                         }
                     }
+                    top = top + originCellDivAlign.top - boardAlign.top
+                    left = left + originCellDivAlign.left - boardAlign.left
                     ship.dataset.origin = originCell
                     ship.style.top = `${top}px`
                     ship.style.left = `${left}px`
@@ -183,6 +188,9 @@ export const dom = (() => {
                     // change ship's position
                     shipPosition = newPosition
                     // change display
+                    const originCellDiv = board.querySelector(`[data-id="${originCell}"]`)
+                    const originCellDivAlign = originCellDiv.getBoundingClientRect()
+
                     if(shipLength % 2 == 0) {
                         let left, top 
                         if(angle == 90) {
@@ -192,6 +200,8 @@ export const dom = (() => {
                             left = -origin*unit
                             top = 0
                         }
+                        left = left + originCellDivAlign.left - boardAlign.left 
+                        top = top + originCellDivAlign - boardAlign.top
                         ship.style.left = `${left}px`
                         ship.style.top = `${top}px`
                     }
@@ -242,11 +252,16 @@ export const dom = (() => {
             for(const cell of aiBoard.children) {
                 // prevent the cell from being selected again
                 cell.addEventListener('click', function eHandler(e) {
+                    const finaleDiv = document.getElementById("finale")
                     if(cell.classList.contains('missed') || cell.classList.contains('attack')) {
-                        display(document.getElementById('finale'))
-                        document.getElementById('finale').textContent = 'you already hit this place! Please choose again!'
+                        const alreadyHitp = document.createElement('p')
+                        alreadyHitp.setAttribute("id", "already")
+                        finaleDiv.appendChild(alreadyHitp)
+                        alreadyHitp.textContent = "You already hit the cell, please choose again"
                     } else {
-                        disappear(document.getElementById('finale'))
+                        if(document.getElementById("already")) {
+                            document.getElementById("already").remove()
+                        }
                         for(const cell of aiBoard.children) {
                             cell.removeEventListener('click', eHandler)
                         }
@@ -274,7 +289,6 @@ export const dom = (() => {
     }
     function reset() {
         const playDiv = document.getElementById('play')
-        document.getElementById('finale').textContent = ''
         playDiv.querySelector(".player-board").remove()
         cleanNode(playDiv.querySelector(".ai-board"))
 

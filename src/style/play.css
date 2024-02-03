@@ -1,13 +1,18 @@
 #play.display {
     display: grid;
-    grid-template-rows: 1fr 1fr 20fr;
+    grid-template-rows: 0.5fr 1fr 5fr;
     place-items: center;
+    align-items: start;
 }
 #restart {
     grid-area: 1/1/2/-1;
+    width: 90px;
+    font-size: 18px;
+    align-self: stretch;
 }
 #finale {
     grid-area: 2/1/3/-1;
+    font-size: 20px;
 } 
 #boards {
     grid-area: 3/1/-1/-1;
