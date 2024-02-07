@@ -26,6 +26,7 @@
     justify-content: space-around;
     gap: 10%;
 }
+
 #boards > .player-board {
     order: 1;
 }

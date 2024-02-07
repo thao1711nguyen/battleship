@@ -1,3 +1,4 @@
+import { describe } from 'yargs'
 import { ship, gameboard, player, computer} from './data.js'
 import { checkValid, noOverLap, getShipPosition, getOrigin, getHeadBottom } from './helpers.js'
 describe('ship', () => {
@@ -200,4 +201,7 @@ describe('getHeadBottom', () => {
         expect(getHeadBottom(originCell, angle, shipLength, column).toString()).toBe([30, 60].toString())
         
     })
+})
+describe('player', () => {
+    
 })

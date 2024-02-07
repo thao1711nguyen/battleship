@@ -7,7 +7,7 @@ export const game = (() => {
     }
     async function play(column, shipSizes) {
         const player1 = player('human')
-        const ai = computer('ai')
+        const ai = computer('computer')
         // display player's board for him/her to place their ships
         const playerShipPlacement = await dom.placeship(column)
         player1.board.placeship(playerShipPlacement)
@@ -29,8 +29,11 @@ export const game = (() => {
                 }
                 idx == 0 ? i =1 : i = 0
                 result = players[i].board.receiveAttack(attack)
+                if(players[idx].name == 'computer') {
+                    players[idx].modState(result, attack)
+                }
                 if(players[idx].name == 'human') {
-                    dom.displayAttack('ai', attack, result)
+                    dom.displayAttack('computer', attack, result)
                 } else {
                     dom.displayAttack('player', attack, result)
                 }

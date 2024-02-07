@@ -201,7 +201,7 @@ export const dom = (() => {
                             top = 0
                         }
                         left = left + originCellDivAlign.left - boardAlign.left 
-                        top = top + originCellDivAlign - boardAlign.top
+                        top = top + originCellDivAlign.top - boardAlign.top
                         ship.style.left = `${left}px`
                         ship.style.top = `${top}px`
                     }
