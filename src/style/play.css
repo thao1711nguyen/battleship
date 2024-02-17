@@ -30,17 +30,17 @@
 #boards > .player-board {
     order: 1;
 }
-#boards > .ai-board {
+#boards > .computer-board {
     order: 2;
 }
 #boards > .player-board, 
-#boards > .ai-board  {
+#boards > .computer-board  {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
 }
 #boards > .player-board > div, 
-#boards > .ai-board > div {
+#boards > .computer-board > div {
     border: 1px solid black;
 }
 /* ship */

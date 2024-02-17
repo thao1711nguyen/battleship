@@ -247,7 +247,7 @@ export const dom = (() => {
         })     
     }
     function attack() {
-        const aiBoard = document.getElementById('play').querySelector('.ai-board')
+        const aiBoard = document.getElementById('play').querySelector('.computer-board')
         return new Promise((resolve) => {
             for(const cell of aiBoard.children) {
                 // prevent the cell from being selected again
@@ -290,7 +290,7 @@ export const dom = (() => {
     function reset() {
         const playDiv = document.getElementById('play')
         playDiv.querySelector(".player-board").remove()
-        cleanNode(playDiv.querySelector(".ai-board"))
+        cleanNode(playDiv.querySelector(".computer-board"))
 
         const placeshipDiv = document.getElementById('place-ship')
         cleanNode(placeshipDiv.querySelector(".player-board"))
@@ -317,7 +317,7 @@ export const dom = (() => {
         const playerBoard = document.getElementById('place-ship').querySelector(".player-board").cloneNode(true)
         const aiBoard = document.getElementById('game-board').content.cloneNode(true)
         boards.appendChild(playerBoard)
-        boards.querySelector(".ai-board").appendChild(aiBoard)
+        boards.querySelector(".computer-board").appendChild(aiBoard)
     }
     return { placeship, attack, displayAttack, displayFinale, reset, prepareBeforePlay, display, disappear, prepareBoards }
 })()
